@@ -9,6 +9,12 @@ class HTTPBackendServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(Client::class, static fn() => new Client(['timeout' => 30]));
+        $this->app->bind(
+            Client::class,
+            static fn() => new Client([
+                'timeout' => 30,
+                'http_errors' => false
+            ])
+        );
     }
 }
