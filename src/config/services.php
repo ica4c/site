@@ -30,4 +30,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'weather_history' => [
+        'rpc_url' => env('WEATHER_HISTORY_RPC_URL', 'http://weather_history_nginx_1/api/v1/rpc')
+    ]
 ];
