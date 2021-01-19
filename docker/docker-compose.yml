@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+
+  # ------------------------------
+  # Public containers
+  # ------------------------------
+  nginx:
+    build: ./nginx
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - public
+      - brokerage
+    volumes:
+      - ../src:/app/
+      - ./shared/logs:/tmp/logs/
+
+  # ------------------------------
+  # Brokerage containers
+  # ------------------------------
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile.debug
+    env_file: .env
+    volumes:
+      - ../src:/app/
+      - ./shared/data/php/xdebug:/tmp/xdebug
+      - ./shared/logs:/tmp/logs/
+    ports:
+      - 9000
+    networks:
+      - brokerage
+      - private
+
+  # ------------------------------
+  # Private containers
+  # ------------------------------
+
+networks:
+  private:
+  brokerage:
+  public:
