@@ -35,6 +35,7 @@ services:
     networks:
       - brokerage
       - private
+      - weather_history
 
   # ------------------------------
   # Private containers
@@ -44,3 +45,5 @@ networks:
   private:
   brokerage:
   public:
+  weather_history:
+    external: true
