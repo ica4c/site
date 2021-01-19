@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\HTTPBackendServiceProvider::class,
+        App\Providers\WeatherServiceIntegrationServiceProvider::class,
     ],
 
     /*
